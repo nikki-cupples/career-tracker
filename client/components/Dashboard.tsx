@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import Navigation from './Navigation'
-import JobBoard from './JobBoard'
+import Navigation from './JobApplications/Navigation'
+import JobBoard from './JobBoards/JobBoard'
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview')

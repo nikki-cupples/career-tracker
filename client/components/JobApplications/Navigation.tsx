@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { useAllJobs } from '../hooks/useAllJobs'
-import { Job } from '../../models/job'
+import { useAllJobs } from '../../hooks/useAllJobs'
+import { Job } from '../../../models/job'
 import JobCard from './JobCard'
 
 function Navigation() {

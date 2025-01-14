@@ -1,7 +1,7 @@
-import { Job } from '../../models/job'
+import { Job } from '../../../models/job'
 import AddJobCard from './AddJobCard'
 import { useState } from 'react'
-import { useEditJob } from '../hooks/useEditJob'
+import { useEditJob } from '../../hooks/useEditJob'
 
 type JobCardProps = {
   jobs: Job[] | undefined
