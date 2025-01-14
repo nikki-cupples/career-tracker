@@ -1,4 +1,4 @@
-import JobCard from './JobCard'
+import Navigation from './Navigation'
 
 function Dashboard() {
   return (
@@ -14,7 +14,7 @@ function Dashboard() {
           </p>
         </header>
 
-        <JobCard />
+        <Navigation />
       </div>
     </div>
   )

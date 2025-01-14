@@ -1,11 +1,13 @@
 import { Job } from '../../models/job'
-import { useAllJobs } from '../hooks/useAllJobs'
 import AddJobCard from './AddJobCard'
 import { useState } from 'react'
 import { useEditJob } from '../hooks/useEditJob'
 
-function JobCard() {
-  const { data } = useAllJobs()
+type JobCardProps = {
+  jobs: Job[] | undefined
+}
+
+function JobCard({ jobs }: JobCardProps) {
   const editJob = useEditJob()
 
   const [expandedJobs, setExpandedJobs] = useState<Record<string, boolean>>({})
@@ -52,8 +54,8 @@ function JobCard() {
 
   return (
     <div className="grid grid-cols-1 gap-6">
-      {data &&
-        data.data
+      {jobs &&
+        jobs
           .sort((a, b) => {
             if (a.applied && !b.applied) {
               return -1
