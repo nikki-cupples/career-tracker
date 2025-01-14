@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { useAddJob } from '../hooks/useAddJob'
-import { JobData } from '../../models/job'
+import { useAddJob } from '../../hooks/useAddJob.ts'
+import { JobData } from '../../../models/job'
 
 function AddJobCard() {
   const [showForm, setShowForm] = useState(false)
