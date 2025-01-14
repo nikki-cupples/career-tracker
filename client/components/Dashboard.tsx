@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Navigation from './JobApplications/Navigation'
+import Navigation from './JobApplications/JobNavigation'
 import JobBoard from './JobBoards/JobBoard'
 
 function Dashboard() {

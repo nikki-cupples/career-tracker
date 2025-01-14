@@ -11,15 +11,12 @@ const queryClient = new QueryClient()
 
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
-    /**
-     * TODO: replace domain, clientId, and audience
-     */
     <Auth0Provider
-      domain=""
-      clientId=""
+      domain="pohutukawa-nikki.au.auth0.com"
+      clientId="RXS0cn1p0XdHVpG0GyO7KCDPT0oF9oEF"
       authorizationParams={{
         redirect_uri: window.location.origin,
-        audience: '',
+        audience: 'https://career-tracker/api',
       }}
     >
       <QueryClientProvider client={queryClient}>
