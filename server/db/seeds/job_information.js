@@ -8,14 +8,14 @@ export async function seed(knex) {
   await knex('job_information').insert([
     {
       id: 1,
-      title: 'test',
-      description: 'test',
-      company: 'test',
-      requirements: 'test',
-      applied: false,
-      date: 'test',
-      contacted: 'no',
-      notes: 'looking for',
+      title: 'Job Title',
+      description: 'Job Description',
+      company: 'Company Name',
+      requirements: 'Requirements for Role',
+      applied: true,
+      date: '01/01/2000',
+      contacted: 'Have I contacted the company for follow up',
+      notes: 'Relevant links',
     },
   ])
 }
