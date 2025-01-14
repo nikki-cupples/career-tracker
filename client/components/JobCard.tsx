@@ -90,13 +90,47 @@ function JobCard() {
                     value={editedJob.description || ''}
                     onChange={handleInputChange}
                   />
-                  <label htmlFor="requirements">Requirements</label>
-                  <textarea
-                    className="mb-2 w-full rounded border p-2"
-                    name="requirements"
-                    value={editedJob.requirements || ''}
-                    onChange={handleInputChange}
+
+                  <label htmlFor="applied">Applied</label>
+                  <input
+                    className="mx-2 mb-2 rounded border p-2"
+                    type="checkbox"
+                    id="applied"
+                    name="applied"
+                    checked={editedJob.applied || false}
+                    onChange={(e) =>
+                      setEditedJob((prev) => ({
+                        ...prev,
+                        applied: e.target.checked,
+                        date: e.target.checked ? prev.date || '' : '',
+                      }))
+                    }
                   />
+
+                  <div className="flex flex-col">
+                    {editedJob.applied && (
+                      <>
+                        <label htmlFor="date" className="sr-only">
+                          Applied Date
+                        </label>
+                        <input
+                          className="mb-2 w-full rounded border p-2"
+                          type="date"
+                          id="date"
+                          name="date"
+                          value={editedJob.date || ''}
+                          onChange={handleInputChange}
+                        />
+                      </>
+                    )}
+                    <label htmlFor="requirements">Requirements</label>
+                    <textarea
+                      className="mb-2 w-full rounded border p-2"
+                      name="requirements"
+                      value={editedJob.requirements || ''}
+                      onChange={handleInputChange}
+                    />
+                  </div>
                   <label htmlFor="contacted">Follow Up Information</label>
                   <textarea
                     className="mb-2 w-full rounded border p-2"
@@ -111,15 +145,15 @@ function JobCard() {
                     value={editedJob.notes || ''}
                     onChange={handleInputChange}
                   />
-                  <div className="flex gap-4">
+                  <div className="flex justify-end space-x-4">
                     <button
-                      className="text-sm text-blue-500 md:text-lg"
+                      className="rounded-md bg-blue-500 px-4 py-2 text-white shadow-md hover:bg-blue-800"
                       onClick={handleSave}
                     >
                       Save
                     </button>
                     <button
-                      className="text-sm text-red-500 md:text-lg"
+                      className="rounded-md bg-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-400"
                       onClick={handleCancel}
                     >
                       Cancel
@@ -175,12 +209,14 @@ function JobCard() {
                       </div>
                     </>
                   )}
-                  <button
-                    className="mx-4 text-sm text-blue-500 md:text-lg"
-                    onClick={() => handleEditClick(job)}
-                  >
-                    Edit
-                  </button>
+                  <div className="mt-2 flex justify-end space-x-4">
+                    <button
+                      className="rounded-md bg-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-400"
+                      onClick={() => handleEditClick(job)}
+                    >
+                      Edit
+                    </button>
+                  </div>
                 </>
               )}
             </div>
