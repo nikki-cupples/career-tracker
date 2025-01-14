@@ -6,7 +6,7 @@ function Dashboard() {
       <div className="w-full max-w-5xl rounded-3xl border border-gray-300 bg-gradient-to-br from-white to-gray-200 p-8 shadow-lg">
         {/* Header */}
         <header className="mb-8 text-center">
-          <h1 className="bg-gradient-to-r from-teal-500 to-blue-400 bg-clip-text text-4xl font-bold text-transparent">
+          <h1 className="text-blue-500 bg-clip-text text-4xl font-bold text-transparent">
             Applications Dashboard
           </h1>
           <p className="mt-2 text-gray-700">

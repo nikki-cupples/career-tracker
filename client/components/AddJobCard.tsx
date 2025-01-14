@@ -88,7 +88,7 @@ function AddJobCard() {
 
           <div className="mb-4">
             <label className="block text-gray-700" htmlFor="company">
-              Company
+              Company Name
             </label>
             <input
               type="text"
@@ -101,8 +101,8 @@ function AddJobCard() {
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700" htmlFor="requirements">
-              Requirements
+            <label className="block py-2 text-gray-700" htmlFor="requirements">
+              Technical Requirements
             </label>
             <textarea
               id="requirements"
@@ -112,8 +112,8 @@ function AddJobCard() {
             />
           </div>
 
-          <div className="mb-4">
-            <label className="block text-gray-700" htmlFor="applied">
+          <div className="mb-4 flex items-center">
+            <label className="mr-2 text-gray-700" htmlFor="applied">
               Applied
             </label>
             <input
@@ -140,7 +140,7 @@ function AddJobCard() {
 
           <div className="mb-4">
             <label className="block text-gray-700" htmlFor="contacted">
-              Contacted
+              Follow Up Notes
             </label>
             <input
               type="text"
@@ -153,7 +153,7 @@ function AddJobCard() {
 
           <div className="mb-4">
             <label className="block text-gray-700" htmlFor="notes">
-              Notes
+              Additional Details
             </label>
             <textarea
               id="notes"
@@ -173,7 +173,7 @@ function AddJobCard() {
             </button>
             <button
               type="submit"
-              className="rounded-md bg-teal-500 px-4 py-2 text-white shadow-md hover:bg-teal-600"
+              className="rounded-md bg-blue-500 px-4 py-2 text-white shadow-md hover:bg-blue-800"
             >
               Add Job
             </button>
