@@ -1,9 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
-import { getJobs } from '../apis/jobs'
+import request from 'superagent'
 
 export function useAllJobs() {
   return useQuery({
     queryKey: ['jobs'],
-    queryFn: getJobs,
+    queryFn: async () => {
+      const res = await request.get('/api/v1/jobs/')
+      return res.body
+    },
   })
 }
