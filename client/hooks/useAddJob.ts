@@ -6,8 +6,8 @@ export function useAddJob() {
   const client = useQueryClient()
 
   return useMutation({
-    mutationFn: async ({ jobs }: { jobs: JobData }) => {
-      await request.post('api/v1/jobs').send(jobs)
+    mutationFn: async (job: JobData) => {
+      await request.post('api/v1/jobs').send(job)
     },
     onSuccess: () => {
       client.invalidateQueries({ queryKey: ['jobs'] })

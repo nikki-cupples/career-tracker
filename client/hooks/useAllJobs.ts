@@ -5,7 +5,7 @@ export function useAllJobs() {
   return useQuery({
     queryKey: ['jobs'],
     queryFn: async () => {
-      const res = await request.get('/api/v1/jobs/')
+      const res = await request.get('/api/v1/jobs')
       return res.body
     },
   })
