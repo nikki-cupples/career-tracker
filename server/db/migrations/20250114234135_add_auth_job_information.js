@@ -6,9 +6,7 @@ export async function up(knex) {
   return knex.schema.table('job_information', (table) => {
     table
       .string('user_id')
-      .references('auth0_id')
-      .inTable('users')
-      .onDelete('CASCADE')
+      
   })
 }
 
