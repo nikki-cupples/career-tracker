@@ -16,6 +16,7 @@ export async function seed(knex) {
       date: '01/01/2000',
       contacted: 'Have I contacted the company for follow up',
       notes: 'Relevant links',
+      user_id: 'authexample'
     },
   ])
 }
