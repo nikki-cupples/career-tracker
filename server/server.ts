@@ -8,6 +8,7 @@ import boardRoutes from './routes/boards.ts'
 const server = express()
 
 server.use(express.json())
+server.use(express.urlencoded({ extended: false }))
 
 server.use('/api/v1/jobs', jobRoutes)
 server.use('/api/v1/users', userRoutes)

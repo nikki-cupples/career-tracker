@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useAuth0 } from '@auth0/auth0-react'
-import {User } from '../../models/user.ts'
+import { User } from '../../models/user.ts'
 import { useState } from 'react'
 import * as api from '../apis/users.ts'
 
@@ -20,11 +20,10 @@ export function useAddProfile() {
         throw new Error("User is not authenticated or missing 'sub' property.")
       }
 
-      const accessToken = await getAccessTokenSilently()
-      console.log(accessToken)
+      const token = await getAccessTokenSilently()
 
       try {
-        const response = await api.upsertUser(profileData, accessToken)
+        const response = await api.upsertUser(profileData, token)
         return response
       } catch (error) {
         console.error('Error during upsertUser:', error)
