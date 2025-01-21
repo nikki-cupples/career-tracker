@@ -8,6 +8,7 @@ type JobCardProps = {
 }
 
 function JobCard({ jobs }: JobCardProps) {
+  console.log('jobs', jobs)
   const editJob = useEditJob()
 
   const [expandedJobs, setExpandedJobs] = useState<Record<string, boolean>>({})
@@ -15,10 +16,11 @@ function JobCard({ jobs }: JobCardProps) {
   const [editedJob, setEditedJob] = useState<Partial<Job>>({})
 
   const toggleExpansion = (jobId: number) => {
-    setExpandedJobs((prev) => ({
-      ...prev,
-      [jobId]: !prev[jobId],
-    }))
+    setExpandedJobs((prev) => {
+      const newExpandedJobs = { ...prev }
+      newExpandedJobs[jobId] = !prev[jobId]
+      return newExpandedJobs
+    })
   }
 
   const handleEditClick = (job: Job) => {
