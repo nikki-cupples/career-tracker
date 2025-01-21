@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useAddJob } from '../../hooks/useAddJob.ts'
-import { JobData } from '../../../models/job'
+import { NewJobData } from '../../../models/job'
 
 function AddJobCard() {
   const [showForm, setShowForm] = useState(false)
@@ -18,7 +18,7 @@ function AddJobCard() {
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
-    const newJob: JobData = {
+    const newJob: NewJobData = {
       title,
       description,
       company,

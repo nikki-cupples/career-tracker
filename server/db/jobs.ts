@@ -1,9 +1,21 @@
 import db from './connection.ts'
-import { AppliedForJob, Job, JobData } from '../../models/job.ts'
+import { AppliedForJob, EditJobData, Job, JobData } from '../../models/job.ts'
 
 // -- GET ALL JOBS -- //
-export async function getAllJobs(): Promise<Job[]> {
-  const jobs = await db('job_information').select('*')
+export async function getAllJobs(user_id: string): Promise<Job[]> {
+  const jobs = await db('job_information')
+    .select(
+      'title',
+      'description',
+      'company',
+      'requirements',
+      'applied',
+      'date',
+      'contacted',
+      'notes',
+      'user_id as userId',
+    )
+    .where({ user_id })
   return jobs as Job[]
 }
 
@@ -14,7 +26,7 @@ export async function getJobById(id: number): Promise<Job> {
 }
 
 // -- ADD NEW JOB -- //
-export async function addJob(data: JobData): Promise<JobData> {
+export async function addJob(data: JobData, userId: string): Promise<JobData> {
   const {
     title,
     description,
@@ -35,6 +47,7 @@ export async function addJob(data: JobData): Promise<JobData> {
     date,
     contacted,
     notes,
+    user_id: userId,
   })
 }
 
@@ -53,7 +66,7 @@ export async function checkOffJob(
 }
 
 // -- EDIT JOB -- //
-export async function editJob(updatedJob: Job): Promise<Job> {
+export async function editJob(updatedJob: EditJobData): Promise<EditJobData> {
   const {
     id,
     title,

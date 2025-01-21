@@ -7,21 +7,31 @@ import {
   checkOffJob,
   editJob,
 } from '../db/jobs'
+import checkJwt from '../auth0'
+import { JwtRequest } from '../auth0'
 
 // -- API ROUTES SERVERSIDE -- //
 const router = express.Router()
 
-// -- GET ALL JOBS -- //
-router.get('/', async (_req, res) => {
+// -- GET ALL USER'S JOBS -- //
+router.get('/', checkJwt, async (req: JwtRequest, res) => {
+  const userId = req.auth?.sub
+
+  if (!userId) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Please provide a valid user id' })
+  }
+
   try {
-    const data = await getAllJobs()
+    const data = await getAllJobs(userId)
     res.json({ data })
   } catch (error) {
     res.sendStatus(500)
   }
 })
 
-// -- GET JOB BY ID -- //
+// -- GET JOB BY JOB ID -- //
 router.get('/:id', async (req, res) => {
   const id = Number(req.params.id)
   try {
@@ -33,10 +43,18 @@ router.get('/:id', async (req, res) => {
 })
 
 // -- ADD NEW JOB -- //
-router.post('/', async (req, res) => {
+router.post('/', checkJwt, async (req: JwtRequest, res) => {
+  const userId = req.auth?.sub
   const newJob = req.body
+
+  if (!userId) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Please provide a valid user id' })
+  }
+
   try {
-    await addJob(newJob)
+    await addJob(newJob, userId)
     res.sendStatus(200)
   } catch (error) {
     res.sendStatus(500)
@@ -67,7 +85,7 @@ router.patch('/:id', async (req, res) => {
 })
 
 // -- EDIT JOB -- //
-router.put('/:id', async (req, res) => {
+router.put('/:id', checkJwt, async (req: JwtRequest, res) => {
   const id = Number(req.params.id)
   const {
     title,

@@ -1,10 +1,11 @@
 import request from 'superagent'
-
-const rootUrl = '/api/v1'
+import { Job } from '../../models/job'
 
 // -- GET JOBS -- //
-export function getJobs() {
-  return request.get(rootUrl + '/jobs').then((res) => {
-    return res.body.jobs
-  })
+export async function getJobs(token: string) {
+  const res = await request
+    .get('/api/v1/jobs')
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+  return res.body as Job[]
 }

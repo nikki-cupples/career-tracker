@@ -1,12 +1,21 @@
 import { useQuery } from '@tanstack/react-query'
-import request from 'superagent'
+import * as api from '../apis/jobs'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export function useAllJobs() {
-  return useQuery({
+  const { user, getAccessTokenSilently } = useAuth0()
+
+  const { data, isLoading, isError } = useQuery({
     queryKey: ['jobs'],
     queryFn: async () => {
-      const res = await request.get('/api/v1/jobs')
-      return res.body
+      const accessToken = getAccessTokenSilently()
+
+      if (user && user.sub) {
+        const res = await api.getJobs(await accessToken)
+        return res
+      }
     },
   })
+
+  return { data, isLoading, isError }
 }
