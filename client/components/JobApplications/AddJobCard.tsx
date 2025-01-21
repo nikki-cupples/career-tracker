@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAddJob } from '../../hooks/useAddJob.ts'
-import { NewJobData } from '../../../models/job'
+import { JobData } from '../../../models/job'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function AddJobCard() {
   const [showForm, setShowForm] = useState(false)
@@ -14,11 +15,18 @@ function AddJobCard() {
   const [notes, setNotes] = useState('')
 
   const { mutate: addNewJob } = useAddJob()
+  const { user } = useAuth0()
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    const userIdSub = user?.sub
 
-    const newJob: NewJobData = {
+    if (!userIdSub) {
+      console.error('User not authenticated or sub ID is missing')
+      return
+    }
+
+    const newJob: JobData = {
       title,
       description,
       company,
@@ -27,6 +35,7 @@ function AddJobCard() {
       date,
       contacted,
       notes,
+      userId: userIdSub,
     }
 
     addNewJob(newJob)
