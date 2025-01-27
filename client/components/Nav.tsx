@@ -35,7 +35,7 @@ function Nav() {
   }, [user, handleProfileUpsert])
 
   return (
-    <div className="w-screen bg-gradient-to-br from-white to-gray-100 py-4 px-4">
+    <div className="w-screen px-4 py-4">
       <div className="flex items-center justify-end space-x-6 px-6 text-black">
         <IfAuthenticated>
           <div className="flex items-center space-x-4">

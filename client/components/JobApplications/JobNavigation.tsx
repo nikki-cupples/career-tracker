@@ -4,13 +4,14 @@ import { Job } from '../../../models/job'
 import JobCard from './JobCard'
 import { IfAuthenticated } from '../Authentication/Authenticated'
 import AddJobCard from './AddJobCard'
+import Loading from '../LoadingErrorPages/Loading'
 
 function Navigation() {
   const { data, isLoading, isError } = useAllJobs()
   const [searchQuery, setSearchQuery] = useState('')
 
   if (isLoading) {
-    return <p>Loading jobs...</p>
+    return <Loading />
   }
 
   if (isError) {
