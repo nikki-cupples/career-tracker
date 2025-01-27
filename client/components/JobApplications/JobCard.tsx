@@ -2,6 +2,7 @@ import { Job } from '../../../models/job'
 import AddJobCard from './AddJobCard'
 import { useState } from 'react'
 import { useEditJob } from '../../hooks/useEditJob'
+import { useDeleteJob } from '../../hooks/useDeleteJob'
 
 type JobCardProps = {
   jobs: Job[] | undefined
@@ -9,6 +10,7 @@ type JobCardProps = {
 
 function JobCard({ jobs }: JobCardProps) {
   const editJob = useEditJob()
+  const delJob = useDeleteJob()
 
   const [expandedJobs, setExpandedJobs] = useState<Record<string, boolean>>({})
   const [editingJobId, setEditingJobId] = useState<number | null>(null)
@@ -41,6 +43,13 @@ function JobCard({ jobs }: JobCardProps) {
         },
       })
     }
+  }
+
+  const handleDel = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: number,
+  ) => {
+    delJob.mutate(Number(id))
   }
 
   const handleInputChange = (
@@ -214,10 +223,16 @@ function JobCard({ jobs }: JobCardProps) {
                   )}
                   <div className="mt-2 flex justify-end space-x-4">
                     <button
-                      className="rounded-md bg-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-400"
+                      className="rounded-md bg-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-blue-400"
                       onClick={() => handleEditClick(job)}
                     >
                       Edit
+                    </button>
+                    <button
+                      className="rounded-md bg-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-red-400"
+                      onClick={(e) => handleDel(e, job.id)}
+                    >
+                      Delete
                     </button>
                   </div>
                 </>
