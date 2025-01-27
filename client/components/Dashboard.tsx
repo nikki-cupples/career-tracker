@@ -14,16 +14,13 @@ function Dashboard() {
     }
   }
   return (
-    <div className="flex min-h-screen justify-center bg-gradient-to-br from-white via-gray-100 to-gray-300 py-20">
+    <div className="flex min-h-screen justify-center bg-gradient-to-br from-white via-gray-100 to-gray-300 py-10">
       <div className="w-full max-w-5xl rounded-3xl border border-gray-300 bg-gradient-to-br from-white to-gray-200 p-8 shadow-lg">
         {/* Header */}
         <header className="mt-8 text-center">
           <h1 className="text-4xl font-bold text-blue-600">
             My Career Dashboard
           </h1>
-          <p className="mt-2 text-gray-700">
-            Tracking and management of my job applications.
-          </p>
         </header>
         <div className="mx-4 justify-center rounded-lg p-4 md:mx-0">
           <button

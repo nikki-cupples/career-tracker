@@ -5,6 +5,7 @@ import { AppliedForJob, EditJobData, Job, JobData } from '../../models/job.ts'
 export async function getAllJobs(user_id: string): Promise<Job[]> {
   const jobs = await db('job_information')
     .select(
+      'id',
       'title',
       'description',
       'company',

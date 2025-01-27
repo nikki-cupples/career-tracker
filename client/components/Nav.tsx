@@ -31,37 +31,42 @@ function Nav() {
         email: user?.email || '',
       }
       handleProfileUpsert(profileData)
-      console.log(user)
     }
   }, [user, handleProfileUpsert])
 
   return (
-    <div className="flex items-center justify-between bg-red-400">
-      <div className="flex pr-16 text-white">
+    <div className="w-screen bg-gradient-to-br from-white to-gray-100 py-4 px-4">
+      <div className="flex items-center justify-end space-x-6 px-6 text-black">
         <IfAuthenticated>
-          <div className="flex items-center hover:underline">
-            <button>
-              <p className="text-l space-l font-labrada mr-3">{user?.name}</p>
-            </button>
+          <div className="flex items-center space-x-4">
+            <div className="text-sm font-medium">
+              <p>{user?.name}</p>
+            </div>
 
-            <button>
+            <div>
               <img
                 src={user?.picture}
                 alt={user?.name}
-                className="mr-3 h-10 w-10 rounded-full"
+                className="h-10 w-10 rounded-full border border-gray-300"
               />
-            </button>
+            </div>
 
-            <button onClick={handleSignOut}>
-              <p className="text-l space-l font-labrada">Sign out</p>
+            <button
+              onClick={handleSignOut}
+              className="text-sm font-medium hover:underline"
+            >
+              <p>Sign out</p>
             </button>
           </div>
         </IfAuthenticated>
 
         <IfNotAuthenticated>
-          <div className="flex items-center hover:underline">
-            <button onClick={handleLogIn}>
-              <p className="text-l space-l font-labrada">Sign in</p>
+          <div>
+            <button
+              onClick={handleLogIn}
+              className="text-sm font-medium hover:underline"
+            >
+              <p>Sign in</p>
             </button>
           </div>
         </IfNotAuthenticated>

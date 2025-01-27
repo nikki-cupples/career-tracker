@@ -8,7 +8,6 @@ type JobCardProps = {
 }
 
 function JobCard({ jobs }: JobCardProps) {
-  console.log('jobs', jobs)
   const editJob = useEditJob()
 
   const [expandedJobs, setExpandedJobs] = useState<Record<string, boolean>>({})
