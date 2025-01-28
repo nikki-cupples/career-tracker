@@ -1,34 +1,20 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Job } from '../../models/job'
-import request from 'superagent'
+import { useAuth0 } from '@auth0/auth0-react'
+import * as api from '../apis/jobs'
 
 export function useEditJob() {
   const client = useQueryClient()
+  const { user, getAccessTokenSilently } = useAuth0()
 
   return useMutation({
     mutationFn: async (data: Job) => {
-      const {
-        id,
-        title,
-        description,
-        company,
-        requirements,
-        applied,
-        date,
-        contacted,
-        notes,
-      } = data
-      await request.put(`/api/v1/jobs/${id}`).send({
-        id,
-        title,
-        description,
-        company,
-        requirements,
-        applied,
-        date,
-        contacted,
-        notes,
-      })
+      if (!user || !user.sub) {
+        throw new Error("User is not authenticated or missing 'sub' property.")
+      }
+      const accessToken = await getAccessTokenSilently()
+
+      await api.editJobInformation(accessToken, data)
     },
     onSuccess: () => {
       client.invalidateQueries({ queryKey: ['jobs'] })

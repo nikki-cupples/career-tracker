@@ -23,3 +23,32 @@ export async function addJob(job: NewJobData, token: string) {
     console.error(500)
   }
 }
+
+// -- EDIT JOB -- //
+export async function editJobInformation(token: string, editedJob: Job) {
+  const {
+    id,
+    title,
+    description,
+    company,
+    requirements,
+    applied,
+    date,
+    contacted,
+    notes,
+  } = editedJob
+  await request
+    .put(`/api/v1/jobs/${id}`)
+    .set('Authorization', `Bearer ${token}`)
+    .send({
+      id,
+      title,
+      description,
+      company,
+      requirements,
+      applied,
+      date,
+      contacted,
+      notes,
+    })
+}
