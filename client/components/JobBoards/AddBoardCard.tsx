@@ -53,7 +53,7 @@ function AddBoardCard() {
               id="company"
               value={company}
               onChange={(e) => setCompany(e.target.value)}
-              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-teal-400 focus:ring focus:ring-teal-200"
+              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-blue-600 focus:ring focus:ring-blue-600"
               required
             />
           </div>
@@ -67,21 +67,21 @@ function AddBoardCard() {
               type="text"
               value={link}
               onChange={(e) => setLink(e.target.value)}
-              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-teal-400 focus:ring focus:ring-teal-200"
+              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-blue-600 focus:ring focus:ring-blue-600"
               required
             />
           </div>
 
           <div className="mb-4">
             <label className="block text-gray-700" htmlFor="board">
-              Name Job Board
+              Board Name
             </label>
             <input
               type="text"
               id="board"
               value={board}
               onChange={(e) => setBoard(e.target.value)}
-              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-teal-400 focus:ring focus:ring-teal-200"
+              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-blue-600 focus:ring focus:ring-blue-600"
               required
             />
           </div>

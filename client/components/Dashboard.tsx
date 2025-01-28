@@ -2,6 +2,10 @@ import { useState } from 'react'
 import Navigation from './JobApplications/JobNavigation'
 import JobBoard from './JobBoards/JobBoard'
 import Nav from './Nav'
+import {
+  IfAuthenticated,
+  IfNotAuthenticated,
+} from './Authentication/Authenticated'
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview')
@@ -51,7 +55,20 @@ function Dashboard() {
             >
               Job Boards
             </button>
-            <div>{renderContent()}</div>
+            <IfAuthenticated>
+              <div>{renderContent()}</div>
+            </IfAuthenticated>
+            <IfNotAuthenticated>
+              {activeTab === 'applications' ? (
+                <div className="block w-full transform rounded-lg border border-gray-300 bg-white p-2 text-left shadow-md transition-transform hover:shadow-xl">
+                  <p>Please sign in to view your applications.</p>
+                </div>
+              ) : (
+                <div className="block w-full transform rounded-lg border border-gray-300 bg-white p-2 text-left shadow-md transition-transform hover:shadow-xl">
+                  <p>Please sign in to view your job boards.</p>
+                </div>
+              )}
+            </IfNotAuthenticated>
           </div>
         </div>
       </div>

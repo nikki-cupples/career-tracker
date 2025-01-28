@@ -77,7 +77,7 @@ function AddJobCard() {
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-teal-400 focus:ring focus:ring-teal-200"
+              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-blue-600 focus:ring focus:ring-blue-600"
               required
             />
           </div>
@@ -90,7 +90,7 @@ function AddJobCard() {
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-teal-400 focus:ring focus:ring-teal-200"
+              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-blue-600 focus:ring focus:ring-blue-600"
               required
             />
           </div>
@@ -104,7 +104,7 @@ function AddJobCard() {
               id="company"
               value={company}
               onChange={(e) => setCompany(e.target.value)}
-              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-teal-400 focus:ring focus:ring-teal-200"
+              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-blue-600 focus:ring focus:ring-blue-600"
               required
             />
           </div>
@@ -117,7 +117,7 @@ function AddJobCard() {
               id="requirements"
               value={requirements}
               onChange={(e) => setRequirements(e.target.value)}
-              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-teal-400 focus:ring focus:ring-teal-200"
+              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-blue-600 focus:ring focus:ring-blue-600"
             />
           </div>
 
@@ -130,7 +130,7 @@ function AddJobCard() {
               id="applied"
               checked={applied}
               onChange={(e) => setApplied(e.target.checked)}
-              className="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-teal-200"
+              className="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-blue-600"
             />
           </div>
 
@@ -143,7 +143,7 @@ function AddJobCard() {
               id="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-teal-400 focus:ring focus:ring-teal-200"
+              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-blue-600 focus:ring focus:ring-blue-600"
             />
           </div>
 
@@ -156,7 +156,7 @@ function AddJobCard() {
               id="contacted"
               value={contacted}
               onChange={(e) => setContacted(e.target.value)}
-              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-teal-400 focus:ring focus:ring-teal-200"
+              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-blue-600 focus:ring focus:ring-blue-600"
             />
           </div>
 
@@ -168,7 +168,7 @@ function AddJobCard() {
               id="notes"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-teal-400 focus:ring focus:ring-teal-200"
+              className="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-blue-600 focus:ring focus:ring-blue-600"
             />
           </div>
 

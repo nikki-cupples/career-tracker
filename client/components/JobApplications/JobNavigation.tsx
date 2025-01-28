@@ -2,10 +2,9 @@ import { useState } from 'react'
 import { useAllJobs } from '../../hooks/useAllJobs'
 import { Job } from '../../../models/job'
 import JobCard from './JobCard'
-import { IfAuthenticated } from '../Authentication/Authenticated'
 import AddJobCard from './AddJobCard'
 import Loading from '../LoadingErrorPages/Loading'
-import Error from '../LoadingErrorPages/Error'
+import ErrorApplications from '../LoadingErrorPages/ErrorApplications'
 
 function Navigation() {
   const { data, isLoading, isError } = useAllJobs()
@@ -16,7 +15,7 @@ function Navigation() {
   }
 
   if (isError) {
-    return <Error />
+    return <ErrorApplications />
   }
 
   const filteredJobs = data?.data.filter((job: Job) => {
@@ -30,22 +29,20 @@ function Navigation() {
 
   return (
     <div>
-      <IfAuthenticated>
-        <div className="mb-4 flex items-center rounded">
-          <input
-            type="text"
-            className="block w-full transform rounded-lg border border-gray-300 bg-white p-2 text-left shadow-md transition-transform hover:shadow-xl"
-            placeholder="Search jobs by title, company, or description..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
-        {data ? (
-          <JobCard key={filteredJobs.id} jobs={filteredJobs} />
-        ) : (
-          <AddJobCard />
-        )}
-      </IfAuthenticated>
+      <div className="mb-4 flex items-center rounded">
+        <input
+          type="text"
+          className="block w-full transform rounded-lg border border-gray-300 bg-white p-2 text-left shadow-md transition-transform hover:shadow-xl"
+          placeholder="Search jobs by title, company, or description..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+      {filteredJobs ? (
+        <JobCard key={filteredJobs.id} jobs={filteredJobs} />
+      ) : (
+        <AddJobCard />
+      )}
     </div>
   )
 }
