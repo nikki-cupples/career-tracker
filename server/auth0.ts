@@ -7,8 +7,8 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const domain = process.env.AUTH0_DOMAIN
-const audience = process.env.AUTH0_AUDIENCE
+const domain = process.env.AUTH0_SERVER_DOMAIN
+const audience = process.env.VITE_AUTH0_AUDIENCE
 
 const checkJwt = jwt({
   secret: jwks.expressJwtSecret({
