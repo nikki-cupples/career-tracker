@@ -30,7 +30,11 @@ function Navigation() {
   return (
     <div>
       <div className="mb-4 flex items-center rounded">
+        <label htmlFor="search-bar" className="sr-only">
+          Search
+        </label>
         <input
+          id="search-bar"
           type="text"
           className="block w-full transform rounded-lg border border-gray-300 bg-white p-2 text-left shadow-md transition-transform hover:shadow-xl"
           placeholder="Search jobs by title, company, or description..."

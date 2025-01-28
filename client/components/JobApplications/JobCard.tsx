@@ -83,6 +83,7 @@ function JobCard({ jobs }: JobCardProps) {
                 <>
                   <label htmlFor="title">Title</label>
                   <input
+                    id="title"
                     className="mb-2 w-full rounded border p-2"
                     name="title"
                     value={editedJob.title || ''}
@@ -90,6 +91,7 @@ function JobCard({ jobs }: JobCardProps) {
                   />
                   <label htmlFor="company">Company</label>
                   <input
+                    id="company"
                     className="mb-2 w-full rounded border p-2"
                     name="company"
                     value={editedJob.company || ''}
@@ -97,6 +99,7 @@ function JobCard({ jobs }: JobCardProps) {
                   />
                   <label htmlFor="description">About</label>
                   <textarea
+                    id="description"
                     className="mb-2 w-full rounded border p-2"
                     name="description"
                     value={editedJob.description || ''}
@@ -137,6 +140,7 @@ function JobCard({ jobs }: JobCardProps) {
                     )}
                     <label htmlFor="requirements">Requirements</label>
                     <textarea
+                      id="requirements"
                       className="mb-2 w-full rounded border p-2"
                       name="requirements"
                       value={editedJob.requirements || ''}
@@ -145,6 +149,7 @@ function JobCard({ jobs }: JobCardProps) {
                   </div>
                   <label htmlFor="contacted">Follow Up Information</label>
                   <textarea
+                    id="contacted"
                     className="mb-2 w-full rounded border p-2"
                     name="contacted"
                     value={editedJob.contacted || ''}
@@ -152,6 +157,7 @@ function JobCard({ jobs }: JobCardProps) {
                   />
                   <label htmlFor="notes">Relevant Details & Links</label>
                   <textarea
+                    id="notes"
                     className="mb-2 w-full rounded border p-2"
                     name="notes"
                     value={editedJob.notes || ''}
@@ -159,7 +165,7 @@ function JobCard({ jobs }: JobCardProps) {
                   />
                   <div className="flex justify-end space-x-4">
                     <button
-                      className="rounded-md bg-blue-500 px-4 py-2 text-white shadow-md hover:bg-blue-800"
+                      className="rounded-md bg-blue-600 px-4 py-2 text-white shadow-md hover:bg-blue-800"
                       onClick={handleSave}
                     >
                       Save
@@ -184,7 +190,7 @@ function JobCard({ jobs }: JobCardProps) {
                     {job.applied ? `Applied on ${job.date}` : 'Not applied'}
                   </p>
                   <button
-                    className="text-sm text-blue-500 md:text-lg"
+                    className="text-sm text-blue-800 md:text-lg"
                     onClick={() => toggleExpansion(job.id)}
                   >
                     {expandedJobs[job.id] ? 'Less' : 'More'}

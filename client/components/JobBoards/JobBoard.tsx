@@ -101,6 +101,7 @@ function JobBoard() {
                     <div className="flex flex-col">
                       <label htmlFor="company">Company</label>
                       <input
+                        id="company"
                         className="mb-2 w-full rounded border p-2"
                         name="company"
                         value={editedBoard.company || ''}
@@ -108,6 +109,7 @@ function JobBoard() {
                       />
                       <label htmlFor="link">Link to Job Board</label>
                       <input
+                        id="link"
                         className="mb-2 w-full rounded border p-2"
                         name="link"
                         value={editedBoard.link || ''}
@@ -115,6 +117,7 @@ function JobBoard() {
                       />
                       <label htmlFor="board">Board Name</label>
                       <textarea
+                        id="board"
                         className="mb-2 w-full rounded border p-2"
                         name="board"
                         value={editedBoard.board || ''}
@@ -123,7 +126,7 @@ function JobBoard() {
                     </div>
                     <div className="flex justify-end space-x-4">
                       <button
-                        className="rounded-md bg-blue-500 px-4 py-2 text-white shadow-md hover:bg-blue-800"
+                        className="rounded-md bg-blue-600 px-4 py-2 text-white shadow-md hover:bg-blue-800"
                         onClick={handleSave}
                       >
                         Save
