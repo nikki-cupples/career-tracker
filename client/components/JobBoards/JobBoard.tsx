@@ -15,14 +15,12 @@ function JobBoard() {
 
   const [editingBoardId, setEditingBoardId] = useState<number | null>(null)
   const [editedBoard, setEditedBoard] = useState<Partial<Board>>({})
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc')
 
   const handleEditClick = (board: Board) => {
     setEditingBoardId(board.id)
     setEditedBoard(board)
-    console.log(board.id)
   }
-
-  console.log(data)
 
   const handleCancel = () => {
     setEditingBoardId(null)
@@ -31,7 +29,6 @@ function JobBoard() {
 
   const handleSave = () => {
     if (editedBoard.id) {
-      console.log(editedBoard)
       editBoard.mutate(editedBoard as Board, {
         onSuccess: () => {
           setEditingBoardId(null)
@@ -58,6 +55,10 @@ function JobBoard() {
     }))
   }
 
+  const toggleSortOrder = () => {
+    setSortOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'))
+  }
+
   if (isLoading) {
     return <Loading />
   }
@@ -66,11 +67,30 @@ function JobBoard() {
     return <ErrorJobBoard />
   }
 
+  // Sort the data alphabetically
+  const sortedData =
+    data?.data.sort((a: Board, b: Board) => {
+      const nameA = a.company.toLowerCase()
+      const nameB = b.company.toLowerCase()
+
+      if (nameA < nameB) return sortOrder === 'asc' ? -1 : 1
+      if (nameA > nameB) return sortOrder === 'asc' ? 1 : -1
+      return 0
+    }) || []
+
   return (
     <>
       <div>
+        <div className="mb-4 flex justify-end">
+          <button
+            className="rounded-md bg-gray-200 px-4 py-2 shadow hover:bg-gray-300"
+            onClick={toggleSortOrder}
+          >
+            Sort {sortOrder === 'asc' ? 'Descending' : 'Ascending'}
+          </button>
+        </div>
         {data &&
-          data.data.map((board: Board) => (
+          sortedData.map((board: Board) => (
             <div
               key={board.link}
               className="my-4 flex w-full transform rounded-2xl border border-gray-300 bg-white p-6 text-left shadow-md transition-transform hover:shadow-xl"
