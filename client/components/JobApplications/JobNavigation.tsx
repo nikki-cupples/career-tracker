@@ -5,6 +5,7 @@ import JobCard from './JobCard'
 import { IfAuthenticated } from '../Authentication/Authenticated'
 import AddJobCard from './AddJobCard'
 import Loading from '../LoadingErrorPages/Loading'
+import Error from '../LoadingErrorPages/Error'
 
 function Navigation() {
   const { data, isLoading, isError } = useAllJobs()
@@ -15,7 +16,7 @@ function Navigation() {
   }
 
   if (isError) {
-    return <p>Failed to load jobs.</p>
+    return <Error />
   }
 
   const filteredJobs = data?.data.filter((job: Job) => {
