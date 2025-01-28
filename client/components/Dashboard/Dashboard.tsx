@@ -6,7 +6,6 @@ import {
   IfAuthenticated,
   IfNotAuthenticated,
 } from '../Authentication/Authenticated'
-import Footer from '../Footer/Footer'
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview')
@@ -73,7 +72,6 @@ function Dashboard() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   )
 }

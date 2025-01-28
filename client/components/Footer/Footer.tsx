@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="absolute bottom-0 left-0 mt-8 w-full bg-gradient-to-br from-gray-200 to-gray-300 py-6 text-center shadow-inner">
+    <footer className="bg-gradient-to-br from-gray-200 to-gray-300 py-6 text-center shadow-inner">
       <div className="flex flex-col items-center">
         {/* Links */}
         <div className="mb-4 flex space-x-4">
