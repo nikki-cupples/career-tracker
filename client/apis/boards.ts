@@ -23,3 +23,12 @@ export async function addBoard(board: BoardData, token: string) {
     console.error(500)
   }
 }
+
+// -- EDIT BOARD -- //
+export async function editBoardInformation(token: string, editedBoard: Board) {
+  const { userId, company, link, id, board } = editedBoard
+  await request
+    .put(`/api/v1/boards/${id}`)
+    .set('Authorization', `Bearer ${token}`)
+    .send({ userId, company, link, id, board })
+}

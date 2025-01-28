@@ -4,7 +4,7 @@ import db from './connection.ts'
 // -- GET ALL BOARDS -- //
 export async function getAllBoards(user_id: string): Promise<Board[]> {
   const jobBoards = await db('job_boards')
-    .select('company', 'link', 'board', 'user_id as userId')
+    .select('id', 'company', 'link', 'board', 'user_id as userId')
     .where({ user_id })
   return jobBoards as Board[]
 }

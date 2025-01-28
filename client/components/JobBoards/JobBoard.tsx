@@ -19,7 +19,10 @@ function JobBoard() {
   const handleEditClick = (board: Board) => {
     setEditingBoardId(board.id)
     setEditedBoard(board)
+    console.log(board.id)
   }
+
+  console.log(data)
 
   const handleCancel = () => {
     setEditingBoardId(null)
@@ -28,6 +31,7 @@ function JobBoard() {
 
   const handleSave = () => {
     if (editedBoard.id) {
+      console.log(editedBoard)
       editBoard.mutate(editedBoard as Board, {
         onSuccess: () => {
           setEditingBoardId(null)
