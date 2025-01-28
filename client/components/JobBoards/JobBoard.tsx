@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { useAllBoards } from '../../apis/boards'
 import { Board } from '../../../models/board'
 import AddBoardCard from './AddBoardCard'
 import Loading from '../LoadingErrorPages/Loading'
 import ErrorJobBoard from '../LoadingErrorPages/ErrorJobBoard'
+import { useAllBoards } from '../../hooks/useAllBoards'
 
 function JobBoard() {
   const { data, isLoading, isError } = useAllBoards()
@@ -15,6 +15,8 @@ function JobBoard() {
   if (isError) {
     return <ErrorJobBoard />
   }
+
+  console.log(data)
 
   return (
     <>

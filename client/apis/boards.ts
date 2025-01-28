@@ -1,29 +1,25 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useQuery } from '@tanstack/react-query'
 import request from 'superagent'
-import { BoardData } from '../../models/board'
+import { Board, BoardData } from '../../models/board'
 
-// -- ADD NEW BOARD -- //
-export function useAddBoard() {
-  const client = useQueryClient()
-
-  return useMutation({
-    mutationFn: async (jobBoard: BoardData) => {
-      await request.post('api/v1/boards').send(jobBoard)
-    },
-    onSuccess: () => {
-      client.invalidateQueries({ queryKey: ['boards'] })
-    },
-  })
+// -- GET USER BOARDS -- //
+export async function getBoards(token: string) {
+  const res = await request
+    .get('/api/v1/boards')
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+  return res.body as Board[]
 }
 
-// -- GET ALL BOARDS -- //
-export function useAllBoards() {
-  return useQuery({
-    queryKey: ['boards'],
-    queryFn: async () => {
-      const res = await request.get('/api/v1/boards')
-      return res.body
-    },
-  })
+// -- ADD NEW BOARD -- //
+export async function addBoard(board: BoardData, token: string) {
+  try {
+    const res = await request
+      .post('/api/v1/boards')
+      .set('Authorization', `Bearer ${token}`)
+      .send(board)
+
+    return res.body
+  } catch (error) {
+    console.error(500)
+  }
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { useAddBoard } from '../../apis/boards.ts'
 import { BoardData } from '../../../models/board.ts'
+import { useAddBoard } from '../../hooks/useAddBoard.ts'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function AddBoardCard() {
   const [showForm, setShowForm] = useState(false)
@@ -9,14 +10,22 @@ function AddBoardCard() {
   const [board, setBoard] = useState('')
 
   const { mutate: addNewBoard } = useAddBoard()
+  const { user } = useAuth0()
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    const userIdSub = user?.sub
+
+    if (!userIdSub) {
+      console.error('User not authenticated or sub ID is missing')
+      return
+    }
 
     const newBoard: BoardData = {
       company,
       link,
       board,
+      userId: userIdSub,
     }
 
     addNewBoard(newBoard)
