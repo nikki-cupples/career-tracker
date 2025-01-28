@@ -12,11 +12,11 @@ const queryClient = new QueryClient()
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
     <Auth0Provider
-      domain="pohutukawa-nikki.au.auth0.com"
-      clientId="RXS0cn1p0XdHVpG0GyO7KCDPT0oF9oEF"
+      domain={import.meta.env.VITE_AUTH0_DOMAIN}
+      clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
       authorizationParams={{
         redirect_uri: window.location.origin,
-        audience: 'https://career-tracker/api',
+        audience: import.meta.env.VITE_AUTH0_AUDIENCE,
       }}
     >
       <QueryClientProvider client={queryClient}>
