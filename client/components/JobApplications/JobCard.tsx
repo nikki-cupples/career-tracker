@@ -112,7 +112,7 @@ function JobCard({ jobs }: JobCardProps) {
                     type="checkbox"
                     id="applied"
                     name="applied"
-                    checked={editedJob.applied || false}
+                    checked={!!editedJob.applied}
                     onChange={(e) =>
                       setEditedJob((prev) => ({
                         ...prev,
@@ -121,6 +121,7 @@ function JobCard({ jobs }: JobCardProps) {
                       }))
                     }
                   />
+                  {editedJob.applied === true && <span>Applied</span>}
 
                   <div className="flex flex-col">
                     {editedJob.applied && (

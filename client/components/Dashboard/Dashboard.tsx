@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import Navigation from './JobApplications/JobNavigation'
-import JobBoard from './JobBoards/JobBoard'
-import Nav from './Nav'
+import Navigation from '../JobApplications/JobNavigation'
+import JobBoard from '../JobBoards/JobBoard'
+import Nav from '../Navigation/Nav'
 import {
   IfAuthenticated,
   IfNotAuthenticated,
-} from './Authentication/Authenticated'
+} from '../Authentication/Authenticated'
+import Footer from '../Footer/Footer'
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview')
@@ -72,6 +73,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

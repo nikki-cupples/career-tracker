@@ -3,9 +3,9 @@ import { useAuth0 } from '@auth0/auth0-react'
 import {
   IfAuthenticated,
   IfNotAuthenticated,
-} from './Authentication/Authenticated.tsx'
-import { useAddProfile } from '../hooks/useAddProfile.ts'
-import { User } from '../../models/user.ts'
+} from '../Authentication/Authenticated.tsx'
+import { useAddProfile } from '../../hooks/useAddProfile.ts'
+import { User } from '../../../models/user.ts'
 
 function Nav() {
   const { user, logout, loginWithRedirect } = useAuth0()
