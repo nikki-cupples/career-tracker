@@ -6,14 +6,24 @@ import {
   getAllBoards,
   getBoardById,
 } from '../db/boards'
+import checkJwt from '../auth0'
+import { JwtRequest } from '../auth0'
 
 // -- API ROUTES SERVERSIDE -- //
 const router = express.Router()
 
 // -- GET ALL JOB BOARDS -- //
-router.get('/', async (_req, res) => {
+router.get('/', checkJwt, async (req: JwtRequest, res) => {
+  const userId = req.auth?.sub
+
+  if (!userId) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Please provide a valid user id' })
+  }
+
   try {
-    const data = await getAllBoards()
+    const data = await getAllBoards(userId)
     res.json({ data })
   } catch (error) {
     res.sendStatus(500)
@@ -32,10 +42,18 @@ router.get('/:id', async (req, res) => {
 })
 
 // -- ADD NEW JOB BOARD -- //
-router.post('/', async (req, res) => {
+router.post('/', checkJwt, async (req: JwtRequest, res) => {
+  const userId = req.auth?.sub
   const newJobBoard = req.body
+
+  if (!userId) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Please provide a valid user id' })
+  }
+
   try {
-    await addJobBoard(newJobBoard)
+    await addJobBoard(newJobBoard, userId)
     res.sendStatus(200)
   } catch (error) {
     res.sendStatus(500)
@@ -54,7 +72,7 @@ router.delete('/:id', async (req, res) => {
 })
 
 // -- EDIT JOB -- //
-router.put('/:id', async (req, res) => {
+router.put('/:id', checkJwt, async (req: JwtRequest, res) => {
   const id = Number(req.params.id)
   const { company, link, board } = req.body
 

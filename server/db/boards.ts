@@ -1,9 +1,11 @@
-import { Board, BoardData } from '../../models/board.ts'
+import { Board, BoardData, EditBoardData } from '../../models/board.ts'
 import db from './connection.ts'
 
 // -- GET ALL BOARDS -- //
-export async function getAllBoards(): Promise<Board[]> {
-  const jobBoards = await db('job_boards').select('*')
+export async function getAllBoards(user_id: string): Promise<Board[]> {
+  const jobBoards = await db('job_boards')
+    .select('company', 'link', 'board', 'user_id as userId')
+    .where({ user_id })
   return jobBoards as Board[]
 }
 
@@ -14,13 +16,17 @@ export async function getBoardById(id: number): Promise<Board> {
 }
 
 // -- ADD NEW BOARD -- //
-export async function addJobBoard(data: BoardData): Promise<BoardData> {
+export async function addJobBoard(
+  data: BoardData,
+  userId: string,
+): Promise<BoardData> {
   const { company, link, board } = data
 
   return await db('job_boards').insert({
     company,
     link,
     board,
+    user_id: userId,
   })
 }
 
@@ -30,7 +36,9 @@ export async function deleteJobBoard(id: number): Promise<Board> {
 }
 
 // -- EDIT JOB BOARD-- //
-export async function editJobBoard(updatedJob: Board): Promise<Board> {
+export async function editJobBoard(
+  updatedJob: EditBoardData,
+): Promise<EditBoardData> {
   const { id, company, link, board } = updatedJob
 
   return await db('job_boards').where('id', id).update({

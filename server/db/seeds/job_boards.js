@@ -11,6 +11,7 @@ export async function seed(knex) {
       company: 'MYOB (Sharsies)',
       link: 'https://careers.myob.com/grad',
       board: 'MYOB Graduates Board',
+      user_id: 'auth|example',
     },
   ])
 }
