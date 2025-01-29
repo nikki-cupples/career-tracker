@@ -25,9 +25,9 @@ function Dashboard() {
         <Nav />
 
         {/* Career Dashboard */}
-        <div className="mt-8 w-full max-w-5xl rounded-3xl border border-gray-300 bg-gradient-to-br from-white to-gray-200 p-8 shadow-lg">
+        <div className="mt-8 w-full max-w-5xl rounded-3xl border border-gray-300 bg-gradient-to-br from-white to-gray-200 p-3 pt-4 shadow-lg md:p-8">
           {/* Header */}
-          <header className="mb-8 text-center">
+          <header className="my-4 text-center md:mb-8">
             <h1 className="text-4xl font-bold text-blue-600">
               My Career Dashboard
             </h1>
@@ -37,7 +37,7 @@ function Dashboard() {
           <div className="mx-4 justify-center rounded-lg p-4 md:mx-0">
             <button
               onClick={() => setActiveTab('applications')}
-              className={`my-4 mr-2 w-full rounded-lg px-4 py-2 transition-all md:w-auto md:rounded-t-lg ${
+              className={`mr-2 w-full rounded-lg px-4 py-2 transition-all md:my-4 md:w-auto md:rounded-t-lg ${
                 activeTab === 'applications'
                   ? 'rounded-md bg-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-400'
                   : 'text-gray-400 hover:bg-blue-600 hover:text-white'
@@ -47,7 +47,7 @@ function Dashboard() {
             </button>
             <button
               onClick={() => setActiveTab('job-board')}
-              className={`my-4 mr-2 w-full rounded-lg px-4 py-2 transition-all md:w-auto md:rounded-t-lg ${
+              className={`my-1 mr-2 w-full rounded-lg px-4 py-2 transition-all md:my-4 md:w-auto md:rounded-t-lg ${
                 activeTab === 'job-board'
                   ? 'rounded-md bg-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-400'
                   : 'text-gray-400 hover:bg-blue-600 hover:text-white'

@@ -83,7 +83,7 @@ function JobBoard() {
       <div>
         <div className="mb-4 flex justify-end">
           <button
-            className="rounded-md bg-gray-200 px-4 py-2 shadow hover:bg-gray-300"
+            className="mt-2 rounded-md bg-gray-200 px-4 py-2 shadow hover:bg-gray-300"
             onClick={toggleSortOrder}
           >
             Sort {sortOrder === 'asc' ? 'Descending' : 'Ascending'}

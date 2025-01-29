@@ -77,7 +77,7 @@ function JobCard({ jobs }: JobCardProps) {
           .map((job: Job) => (
             <div
               key={job.id}
-              className="block w-full transform rounded-2xl border border-gray-300 bg-white p-6 text-left shadow-md transition-transform hover:shadow-xl"
+              className="block w-full transform rounded-2xl border border-gray-300 bg-white p-3 text-left shadow-md transition-transform hover:shadow-xl md:p-6"
             >
               {editingJobId === job.id ? (
                 <>
@@ -218,13 +218,17 @@ function JobCard({ jobs }: JobCardProps) {
                         Follow Up Information
                       </p>
                       <div className="rounded-lg bg-gray-100 p-2 shadow-inner">
-                        <p className="rounded p-2 text-sm">{job.contacted}</p>
+                        <p className="break-words rounded p-2 text-sm">
+                          {job.contacted}
+                        </p>
                       </div>
                       <p className="mt-4 text-sm font-semibold capitalize text-gray-800">
                         Relevant Details & Links
                       </p>
                       <div className="rounded-lg bg-gray-100 p-2 shadow-inner">
-                        <p className="rounded p-2 text-sm">{job.notes}</p>
+                        <p className="break-words rounded p-2 text-sm">
+                          {job.notes}
+                        </p>
                       </div>
                     </>
                   )}

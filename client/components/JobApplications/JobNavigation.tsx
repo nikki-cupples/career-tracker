@@ -37,7 +37,7 @@ function Navigation() {
           id="search-bar"
           type="text"
           className="block w-full transform rounded-lg border border-gray-300 bg-white p-2 text-left shadow-md transition-transform hover:shadow-xl"
-          placeholder="Search jobs by title, company, or description..."
+          placeholder="Search jobs by title or company..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
