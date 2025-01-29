@@ -19,7 +19,7 @@ function Dashboard() {
     }
   }
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-gray-100 to-gray-300 py-5">
+    <div className="min-h-screen bg-gradient-to-br from-white via-gray-100 to-gray-300 px-2 py-5">
       <div className="flex flex-col items-center">
         {/* Navigation */}
         <Nav />
