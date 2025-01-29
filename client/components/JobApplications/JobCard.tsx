@@ -202,7 +202,7 @@ function JobCard({ jobs }: JobCardProps) {
                         About
                       </p>
                       <div className="rounded-lg bg-gray-100 p-2 shadow-inner">
-                        <p className="mt-2 line-clamp-3 rounded p-2 text-sm text-gray-800">
+                        <p className="mt-2 rounded p-2 text-sm text-gray-800">
                           {job.description}
                         </p>
                       </div>
