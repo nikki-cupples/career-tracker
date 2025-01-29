@@ -12,7 +12,7 @@ function Nav() {
   const { handleProfileUpsert } = useAddProfile()
 
   const handleSignOut = () => {
-    logout()
+    logout({ logoutParams: { returnTo: window.location.origin } })
   }
 
   const handleLogIn = async () => {
